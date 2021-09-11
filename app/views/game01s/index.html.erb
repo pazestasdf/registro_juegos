@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Game01s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rule text</th>
+      <th>Rule File</th>
+      <th>Box</th>
+      <th>Pieces</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @game01s.each do |game01| %>
+      <tr>
+        <td><%= game01.name %></td>
+        <td><%= game01.rule_text %></td>
+        <td>
+          <%= image_tag game01.rule.variant(resize: "50x50", type: :grayscale) %>
+          <br/>
+          <%= link_to "Descargar", rails_blob_path(game01.rule, disposition: 'attachment')%>
+        </td>
+        <td>
+          <%= image_tag(game01.box, :class => "img_table") %>
+          <br/>
+          <%= link_to game01.box.filename, rails_blob_path(game01.box, disposition: 'attachment')%>
+        </td>
+        <td>
+          <% game01.pieces.each do |piece| %>
+          <div style="display: inline-block">
+            <%= image_tag(piece, :class => "img_table")%>
+            <br/>
+          <%= link_to "Descargar", rails_blob_path(piece, disposition: 'attachment')%>
+            </div>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', game01 %></td>
+        <td><%= link_to 'Edit', edit_game01_path(game01) %></td>
+        <td><%= link_to 'Destroy', game01, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game01', new_game01_path %>
