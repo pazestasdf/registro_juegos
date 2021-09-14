@@ -9,8 +9,8 @@
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: AKIAXSQJUJSGOJPD4AX2
-  secret_access_key: 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
+  access_key_id: -----------------------
+  secret_access_key: ------------------------
   region: us-east-2
   bucket: desafio-registro-juegos
   
